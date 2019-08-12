@@ -1,0 +1,4 @@
+path.png:
+    The path is much longer than the path obtained for deterministic maze. The probabitiy of taking optimal step(leading to shortest path) at each point is decreased from 1 to around 0.5 which leads to larger path than optimal path. So, stocahistic path wont be completely random path but a suboptimal path.
+plot.png:
+    The graph is drawn for 10 different equally spaced values between [0,1]. We can observe that as the probability p increases the path length decreases and it reaches to optimal path when p=1

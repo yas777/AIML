@@ -1,0 +1,15 @@
+-> Accuracy of ensemble methods(bagging, boosting) > Accuracy of perceptron
+
+1)
+sampling ratio in boosting = 0.5
+Trainging accuracy 
+->Training accuracy with boosting is approaching 100%(with a slow rate) as iterations increase as the new hypothessis increase weights for wrongly classifed points by old classifier but the training accuracy is oscilates around 93%
+->Test accuracy of bagging almost saturates while for bagging it is slightly decreasing as bagging resolves overfitting problem while boosting doesn't as it increases weights 
+
+2)True
+->An Ensemble method with perceptron as weak learner can draw boundaries with multiple lines while the perceptron can draw only a line boundary
+-> Data in which points are enclosed in the triangle are labeled positive and all the points outside the triangle are negative can be separated by ensemble of threee perceptrons each draws a line in triangle (can attain 100% AS WE increase iterations) while a single perceptron cant
+
+
+
+*Submitted plots for numclassifiers from 20 to 50

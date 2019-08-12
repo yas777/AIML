@@ -1,0 +1,1 @@
+python2 task3b.py $1 $2 $3

@@ -1,0 +1,29 @@
+2)
+Ridge :-
+lambda - 12.4
+sse - 540311939517.00684
+
+Lasso :- 
+lambda - 3.4e5
+sse - 534714154036.8116
+
+The plot gives you the idea of where the optimal lambda. If it continously decreasing in the selected interval or decreasing at the end of the intreval the optimal lambda may lie to right of the interval and vice versa
+So, the shape of the plot gives the most appropriate region to search for optimal lambda.
+5)
+a)The solution in case of lasso is sparse while the solution for ridge is not sparse.
+Reason :- The optimal W for lasso lies on intersection of loss contour and sigma(|W(i)|) contour(which tilted square) 
+while for ridge it is intersection of loss contour and sigma(W(i)**2) contour(which is circle in 2d).
+So in circle case the intersection is equally probably at all points of a contour but in rhombus at corners you have 270 degrees while the circle has 180 degrees at every point on circle. So in lasso probability of intersection is high at corners so we get sparse solutions  
+
+and -> Many of co-efficients are zero even for small lambdas in lasso => 
+    even if we give low weightage for regularisation the some co-efficients are becoming zero
+
+b) Depends on the condition one is beneficial than other
+lasso:-
+-> Along with regularisation as it is zeroing the weights of unwanted features it is also reducing dimension. As the weight matrix is sparse the required storage space is lesser
+-> As general optimal lambda of lasso are larger than ridge the tuning of lambda is slightly difficult in lasso
+Ridge :-
+-> As ridge tries to distrubute the weights among all features. It tries to use all the features in prediction.
+
+As lasso is completely removing the weights of unwanted features. for reasoning about features it is good as their are less features remaingn and it occupies small storage
+But If in test data if there is data point which can be predicted better from the zeroed weight features lasso wont preform better in classifying that point while ridge is trying to learn from every feature it performs better

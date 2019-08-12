@@ -1,0 +1,1 @@
+python3 task1b.py $1

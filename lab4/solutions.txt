@@ -1,0 +1,76 @@
+Name: Yaswanth Kumar
+Roll number: 160050066
+========================================
+
+SSE(C(t),M(t)) => C(t) -> clusters at iteration t, M(t) -> Centroids of clusters at time t
+================
+     TASK 2
+================
+
+
+1. Run your code on datasets/garden.csv, with different values of k. Looking at the performance plots, does the SSE of k-means algorithm ever increase as the iterations are made? (1 mark)
+Answer:NO
+-> Beacause SSE(C(t+1),M(t)) < SSE(C(t),Mt(t)) =>(Every point is moving to closest centroid)
+		and	SSE(C(t+1),M(t+1)) < SSE(C(t+1),M(t)) =>(Sigma of squares is minimum at correspodings centroids)
+
+		=> SSE(C(t+1),M(t+1)) < SSE(C(t),M(t)) => SSE decreases in every iteration.
+
+3. Look at the files 3lines.png and mouse.png. Manually draw cluster boundaries around the 3 clusters visible in each file (no need to submit the hand drawn clusters). Test the k-means algorithm on the datasets datasets/3lines.csv and datasets/mouse.csv. How does the algorithm’s clustering compare with the clustering you would do by hand? Why do you think this happens? (1 mark)
+Answer:
+
+mouse.csv:- Execpted clusters are one big circle at the middle(face) and two smaller circles on right and left top(ears) but in the obtained cluster the points of head closer ears are going into ear cluster because the program cant terminate at expected clusters configuration because the farther points in head are closer ear centroids so, in next iteration they will move into ear cluster.
+->The clusters which we form are obtained by image segmentation we will try to find a boundary that encloses the object  
+->Visible cluster configuration is not even a local minima in mouse.csv
+
+3lines.csv:-Difference here is the visible configuration is one of the local minima => if algo reaches this configuration in any iteration it terminates because every point is closer to its centroid than other(which is not for mouse) but apart from this minima there are other local minima, so we cant guarantee that algo always outputs visible cluster configuration depending on intialistions of clusters the algo may end up in another local minima.
+
+
+================
+     TASK 3
+================
+
+1. For each dataset, with kmeansplusplus initialization algorithm, report “average SSE” and "average iterations". Explain the results. (2 mark)
+Answer:
+
+Dataset     |  Initialization | Average SSE  | Average Iterations
+==================================================================
+   100.csv  |        forgy    |8472.63311469|	2.43
+   100.csv  |        kmeans++ |8472.63311469|   2.0
+  1000.csv  |        forgy    |21337462.2968|	3.28
+  1000.csv  |        kmeans++ |19887301.0042|   3.16
+ 10000.csv  |        forgy    |168842238.612|   21.1
+ 10000.csv  |        kmeans++ |22323178.8625|	7.5
+
+->Average iterations and avg SSE are less for kmeans++ and this difference increases with increase in dataset size.
+-> As in k-means++ we try to choose distant centroids intially, the subsequent change from one iter ro another will decrease => It converges faster (Order of logk)
+-> In k-means++ as we are intialising carefully we kind of obtain optimal clusters whereas for some random intialistion in kmeans it may cluster poorly, so the avg SSE is more kmeans SSE this factor increases with increses in dataset size as no.of poor clusters increases.
+
+================
+  TASK 4
+================
+
+1. Can you observe from the visualization that k-medians algorithm is more robust to outliers as compared to k-means? Why do you think this happens? (1.5 marks)
+Answer:
+For n = 50
+		  outliers3.csv	|	outliers4.csv	| outliers5.csv
+kmeans 	  1414.41345735 |	1414.41345735	| 23157.8282079
+k-median  726.564734549 |	588.523280885	| 2386.49143991
+
+->In median calculation we just take the middle element suppose the elements are 1-10 and outlier is 100 mean will deviate by 10(5.5 -> 14.5) while median changes from 5 -> 5.5 => Mean
+is effected more than median due to outliers, so shift in centroids for mean case is more than median => SSE for mean is more than median inpresence of outliers. 
+
+================
+  TASK 8
+================
+
+1. What do you observe as we reduce the number of clusters (k)? Answer in reference to the quality of decompressed image. (0.5 mark)
+Answer: As we redeuce k the quality of image decreases as SSE(C,M) increases with k(SSE(C,M) will measure of how close the decompressed image to original, smaller SSE more closer to original image)
+
+
+2. You can observe that for the small number of clusters, the degree of compression (original size/compressed size) is about the same as that of when we use larger number of clusters even though we need to store lesser number of colors. Can you tell why? How can we increase this ratio in case of smaller number of clusters? [1 mark]
+Answer: 
+Original size = h*w*3 bytes
+Compressed size = h*w*1(for storing centroid labels) + k*3(for storing centroids of color image k if it is grey)bytes
+
+-> As k is negligible when compared to h*w the compressed size is more or less the same for different k values => degree of compression is about the same even if we increase k 
+-> For smaller values of k assume k=4 -> then for storing cluster labels 2 bits are sufficient instead of 1byte(8 bits). So for smaller values of k no.of bits allocated for storing cluster labels can be decreased(logk are enough).

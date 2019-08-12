@@ -1,0 +1,24 @@
+2.1)
+->Both Train accuracy and Test accuracy are increasing (at faster rate intially) slowly got saturated at 85% and 80% respectively.
+->Training data is got saturated at around 85% shows that the data is not perfeclty linear separable but train acc is 85%(which is high) shows that the data is approximately linear separable.
+
+2.2) 
+->Training accuracy is deacresing and the test accuracy is increasing with increase in the training data size
+->Intially the the model overfits the data as the training data is very low=>low testing accuracy and high training accuracy but as the training data increases overfit decreses results in increase of test accuracy and decrease of training accuracy.
+
+->If the training size is zero => Final classifier is the initial classifier(where all weights are zero). So every data point will get the same label as the outout from classifier is zero for every data point. So, if we assume the data is uniformly distrubuted among all 10 classes then it will give 10% accuracy.
+
+3.1)
+python dataClassifier.py -c 1vr -t 800 -s 8000
+5706 correct out of 8000 (71.3%).
+
+python dataClassifier.py -c 1v1 -t 800 -s 8000
+5724 correct out of 8000 (71.5%).
+
+python dataClassifier.py -c 1vr -t 80000 -s 20000
+14752 correct out of 20000 (73.8%).
+
+python dataClassifier.py -c 1vr -t 80000 -s 20000
+15766 correct out of 20000 (78.8%).
+
+-> There is no significant diff if the dataset is small but on full dataset the 1v1 acc is more than 1vr as the capacity of 1v1 is more(i.e it calculating more features) than 1vr it can perform better on large datasets.

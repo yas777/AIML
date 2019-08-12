@@ -1,0 +1,18 @@
+
+Q1)Compare the graphs task2_submit.png , task3_submit.png and task4_submit.png
+=>In random intialisation there is no heuristic, so the length of the intilal tour can be very high in worst case may results in bad local minima convergence
+=>In nearest neighbour tough there is a heuristic, but the upper bound is 1/2(logn) + 1/2(link in references.txt), so as the n increases in worst case as the intial length is high it may converge to relatively(better than worst case of random) bad minima
+and it is highly sensitive to intial_city different intial_cities has different lengths and different convergence rate
+=>As mentioned in webpage mentioned the tour length of eucledian tour is less than the twice the optimal length. It is better bound than above two 
+-> As the upper bound of eucledian > nearest > random so, picking eucledian will on avg will goes to better local minima than other two.
+
+Q2)task2.submit and task6_submit
+=>Both are converging to relatively same local minima but 2-opt + 3-opt convergence rate is faster than 2-opt.
+As the search space is bigger in 2-opt + 3-opt than 2-opt you can make better steps in each move in 2 + 3 leading to faster convergence.
+
+Q3)task3_submit and task7_submit
+=> No significant difference in convergence rate as the intialisations is relatively better than in random case
+=> Converging to better local minima in 2-opt + 3-opt due to large space while 2-opt sturct at relatively higher minima is evident in seed-3,4(Another reason :- generally 3-opt converges to a better local minima than 2-opt)
+
+Q4)task4_submit.png and task8_submit.png
+=> No significant change in behavoiur of graphs in this case but in general it(2-opt + 3-opt) may converge to better minima because 3-opt converges to better minima than 2-opt

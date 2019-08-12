@@ -1,0 +1,27 @@
+Q1)
+	nn1 = nn.NeuralNetwork(2, 0.1, 100, 50)
+	nn1.addLayer(FullyConnectedLayer(2,5))
+	nn1.addLayer(FullyConnectedLayer(5,2))
+	Minimal model contains the 4 nodes in hidden nodes to separate into quadrants and 2 output nodes for classifying two quadrants into same class
+	but to classify with 90% for all seeds i took 5 hidden nodes
+Q2)
+
+	nn1 = nn.NeuralNetwork(2, 0.01, 100, 30)
+	nn1.addLayer(FullyConnectedLayer(2,2))
+	nn1.addLayer(FullyConnectedLayer(2,2))
+
+	2 hidden nodes and 2 output nodes act as four lines of separations vertical diameter,tangent and two other tangents
+Q3)
+
+	nn1 = nn.NeuralNetwork(10, 0.01, 100, 30)
+	nn1.addLayer(FullyConnectedLayer(784,30))
+	nn1.addLayer(FullyConnectedLayer(30,10))
+
+	We are able to get 90% accuracy without a hidden layer for most of the seeds. To work across all seeds i am taking 30 nodes in hidden layer
+Q4)
+
+	nn2 = nn.NeuralNetwork(10, 0.01, 100, 30)
+	nn2.addLayer(ConvolutionLayer([3,32,32], [10,10], 10, 2))
+	nn2.addLayer(AvgPoolingLayer([10,12,12], [4,4], 4))
+	nn2.addLayer(FlattenLayer())
+	nn2.addLayer(FullyConnectedLayer(90,10))

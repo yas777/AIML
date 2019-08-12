@@ -1,0 +1,15 @@
+Task3:
+	A state in this case is all possible values at each square. For using informed search we should have consistent heuristics which can be computed easily. In case of finding shortest path the distance heuristic can be computed easily but in sudoku coming up with a heuristic that canbe computed easily and checking the consisitency is difficult and path cost is the no.of eliminations form intial state to solved state
+Task7:
+	Djikstra nodes explored 80, 26743
+	A* search nodes explored 21, 13048
+
+	f(x) = g(x) + h(x) 
+	Let g(e) is the optimal cost from start node to end node. Then we will visit every node whose f(n) < g(e) but in djkistra we will visit all nodes whose g(n) < g(e) => Every expanded node in A* is expanded in djkistra but there are whose g(n) < g(e) but g(n) + h(n) < g(e) those wont be explored in A*
+	Therefore A* will expand less nodes.
+
+Task7b:	
+	Heuristic is min length of node to all end nodes and the heuristic is consisitent
+	proof: Assume a transisition from n to n1 then h(n) < cost(n->n1) + h(n1) if not n1 we would be visited first.
+
+
